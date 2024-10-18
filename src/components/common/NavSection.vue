@@ -1,15 +1,15 @@
 <template>
-  <header
-    :class="`${position === 'header' ? 'bg-[#025048] sticky top-0 text-white h-[80px] md:h-[100px]' : 'bg-[#f1f4f1] text-[#025048] h-auto min-h-[100px] p-10 '} flex justify-center items-center px-5 md:px-10`"
+  <div
+    :class="`transition-all font-roboto ${position === 'header' ? 'bg-black sticky top-0 text-white h-[80px] md:h-[100px] z-30' : 'bg-[#f1f4f1] text-black h-auto min-h-[100px] p-10 '} flex justify-center items-center px-5 md:px-10`"
   >
     <nav
       :class="`max-w-[1440px] grid ${position === 'footer' ? 'max-sm:grid-cols-1 max-sm:space-y-5 justify-center items-center max-md:grid-cols-3 grid-cols-5' : 'grid-cols-5'} w-full items-center justify-center`"
     >
       <a href="/" class="title col-span-1 text-left max-sm:text-center text-2xl"
-        >CeramicShop</a
+        >CutRateStore</a
       >
       <ul
-        :class="` m-auto grid  w-[75%] max-w-[400px] text-center ${position === 'header' ? 'max-md:hidden grid-cols-4 col-span-3' : 'grid-cols-1 md:grid-cols-4 md:col-span-3'}`"
+        :class="`m-auto grid  w-[75%] max-w-[400px] text-center ${position === 'header' ? 'max-md:hidden grid-cols-4 col-span-3' : 'grid-cols-1 md:grid-cols-4 md:col-span-3'}`"
       >
         <li
           :class="`px-5 ${position === 'header' ? 'hover:scale-x-110 hover:scale-y-110 duration-100 ease-in-out' : 'my-1'}`"
@@ -175,9 +175,9 @@
         </svg>
       </button>
     </nav>
-  </header>
+  </div>
   <div
-    :class="`h-auto hidden ${isMenuOpen && position === 'header' ? 'max-md:block' : ''} border-2-[#025048]`"
+    :class="`h-auto w-full absolute transition-all duration-500 bg-[#f1f4f1] ${isMenuOpen && position === 'header' ? 'max-md:block -left-0' : '-left-full'} z-10`"
   >
     <ul class="cursor-pointer">
       <li class="px-5 py-3 hover:bg-[#fafafb]">
@@ -195,7 +195,7 @@
     </ul>
   </div>
   <div
-    :class="`${position === 'header' ? 'hidden' : 'bg-[#f1f4f1] text-[#424B4A] max-w-[1440px] p-5 md:p-10 border-t-2 flex max-sm:block justify-between'}`"
+    :class="`${position === 'header' ? 'hidden' : 'bg-[#f1f4f1] text-[#424B4A] p-5 md:p-10 border-t-2 flex max-sm:block justify-between'}`"
   >
     <div class="text-center">Copyright © 2024</div>
     <div class="text-center">All rights reserved</div>
@@ -216,23 +216,16 @@ export default {
     },
     appWidth: {
       type: Number,
+      required: false,
     },
   },
   methods: {},
   watch: {
     appWidth() {
-      console.log(this.appWidth)
       if (this.appWidth > 768 && this.isMenuOpen) this.isMenuOpen = false
     },
   },
 }
 </script>
 
-<style scoped lang="scss">
-.title {
-  font-family: 'Playfair Display', serif;
-}
-ul li {
-  font-family: 'Work Sans';
-}
-</style>
+<style scoped lang="scss"></style>

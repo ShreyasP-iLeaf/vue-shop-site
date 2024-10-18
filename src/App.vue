@@ -1,12 +1,11 @@
 <template class="max-w-[1440px]">
   <NavSection position="header" :appWidth="appWidth" />
-  <div class="h-[150vh]"></div>
-  <NavSection position="footer" :appWidth="appWidth" />
+  <router-view />
+  <NavSection position="footer" />
 </template>
 
 <script>
 import NavSection from './components/common/NavSection.vue'
-
 export default {
   data() {
     return {
