@@ -1,5 +1,9 @@
 <template class="max-w-[1440px]">
-  <NavSection position="header" :appWidth="appWidth" />
+  <NavSection
+    class="sticky top-0 z-50"
+    position="header"
+    :appWidth="appWidth"
+  />
   <router-view />
 </template>
 

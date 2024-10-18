@@ -9,7 +9,8 @@
   font-family: 'Roboto Condensed';
 }
 
+html,
 body,
 #app {
-  min-height: 100vh;
+  min-height: auto;
 }

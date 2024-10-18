@@ -9,5 +9,5 @@
 html,
 body,
 #app {
-  height: auto;
+  min-height: auto;
 }

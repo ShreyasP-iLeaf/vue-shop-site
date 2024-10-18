@@ -1,9 +1,9 @@
 <template>
-  <section
-    :class="`${products.length && productsViewed ? 'relative' : 'absolute h-[calc(100vh-80px)] md:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] bg-black'}  bg-black delay-500 w-full p-5 md:p-10 transition-all duration-1000 ${productsViewed ? '-left-0' : '-left-full'}`"
+  <div
+    :class="`absolute h-auto bg-black delay-500 w-full p-5 md:p-10 transition-all duration-1000 ${showProducts ? '-left-0 relative' : '-left-full'}`"
   >
     <div
-      v-show="products.length"
+      v-show="showProducts"
       class="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
     >
       <router-link
@@ -44,8 +44,8 @@
         </div>
       </router-link>
     </div>
-  </section>
-  <NavSection position="footer" />
+    <NavSection v-show="showProducts" position="footer" />
+  </div>
 </template>
 
 <script>
@@ -55,15 +55,25 @@ export default {
   name: 'ProductList',
   data() {
     return {
-      productsViewed: false,
       products: [],
     }
+  },
+  props: {
+    viewProducts: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+  },
+  computed: {
+    showProducts() {
+      return this.viewProducts && this.products.length
+    },
   },
   components: {
     NavSection: NavSection,
   },
   beforeMount() {
-    this.productsViewed = true
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(json => {
