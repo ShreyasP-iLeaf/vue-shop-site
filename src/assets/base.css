@@ -6,5 +6,8 @@
   font-weight: normal;
 }
 
-body {
+html,
+body,
+#app {
+  height: auto;
 }

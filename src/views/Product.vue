@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[150vh] bg-biege"></div>
+  <div class="h-[400vh] bg-biege"></div>
 </template>
 
 <script>

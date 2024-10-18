@@ -1,7 +1,6 @@
 <template class="max-w-[1440px]">
   <NavSection position="header" :appWidth="appWidth" />
   <router-view />
-  <NavSection position="footer" />
 </template>
 
 <script>
