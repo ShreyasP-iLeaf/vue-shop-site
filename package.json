@@ -13,13 +13,10 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47",
     "click-outside-vue3": "^4.0.1",
     "pinia": "^2.2.4",
-    "roboto-fontface": "^0.10.0",
     "vue": "^3.5.12",
-    "vue-router": "^4.4.5",
-    "vuetify": "^3.7.0-beta.1"
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",

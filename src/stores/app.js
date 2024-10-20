@@ -2,13 +2,16 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const cartStore = defineStore('cart', () => {
-  const cart = ref([])
+  let cart = ref([])
   const noOfItemsInCart = computed(() => cart.value.length)
   function addToCart(newProdcut) {
     cart.value.push(newProdcut)
   }
+  function updateCart(newProducts) {
+    cart.value = newProducts
+  }
 
-  return { cart, noOfItemsInCart, addToCart }
+  return { cart, noOfItemsInCart, addToCart, updateCart }
 })
 
 export const productStore = defineStore('products', () => {

@@ -36,10 +36,15 @@
           </li>
         </ul>
         <button
-          :class="`${position !== 'header' ? 'hidden' : ''} cols-span-2 max-md:col-span-4 flex justify-end self-center items-center`"
+          :class="`${position !== 'header' ? 'hidden' : ''} relative cols-span-2 max-md:col-span-4 flex justify-end self-center items-center`"
         >
+          <div
+            :class="`max-md:hidden absolute right-0 -top-4 rounded-full bg-[#e8eaed] text-black w-5 h-5 ${cartValue ? 'animate-pulse' : ''}`"
+          >
+            {{ cartValue }}
+          </div>
           <svg
-            class="max-md:hidden"
+            :class="`max-md:hidden ${cartValue ? 'animate-pulse' : ''}`"
             xmlns="http://www.w3.org/2000/svg"
             height="30px"
             viewBox="0 -960 960 960"
@@ -207,6 +212,7 @@
 </template>
 
 <script>
+import { cartStore } from '@/stores/app'
 export default {
   name: 'NavSection',
   data() {
@@ -227,6 +233,11 @@ export default {
   watch: {
     appWidth() {
       if (this.appWidth > 768 && this.isMenuOpen) this.isMenuOpen = false
+    },
+  },
+  computed: {
+    cartValue() {
+      return cartStore().noOfItemsInCart
     },
   },
 }
