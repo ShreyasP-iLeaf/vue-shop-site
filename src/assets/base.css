@@ -10,4 +10,5 @@ html,
 body,
 #app {
   min-height: auto;
+  scroll-behavior: smooth;
 }

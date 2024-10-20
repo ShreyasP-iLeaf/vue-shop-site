@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ProductList from '../views/ProductList.vue'
 import Landing from '../views/Landing.vue'
+import Product from '@/views/Product.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,14 +11,9 @@ const router = createRouter({
       component: Landing,
     },
     {
-      path: '/products',
-      name: 'products',
-      component: ProductList,
-    },
-    {
-      path: '/details',
+      path: '/details/:id',
       name: 'product',
-      component: () => import('../views/Product.vue'),
+      component: Product,
     },
   ],
 })

@@ -1,17 +1,22 @@
 <template>
   <div
-    :class="`absolute h-auto bg-black delay-500 w-full p-5 md:p-10 transition-all duration-1000 ${showProducts ? '-left-0 relative' : '-left-full'}`"
+    ref="productlist"
+    :class="`absolute h-auto bg-black delay-100 w-full p-5 md:p-10 transition-all duration-300 ${showProducts ? '-left-0 relative' : '-left-full'}`"
   >
     <div
-      v-show="showProducts"
       class="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
     >
       <router-link
-        to="/details"
+        :to="{
+          name: 'product',
+          params: {
+            id: item.id,
+          },
+        }"
         v-for="(item, index) in products"
         :key="index"
         :id="item.id"
-        class="bg-white grid grid-rows-5 p-3 border-2 m-3 text-center relative shadow-inner"
+        :class="`bg-white grid grid-rows-5 p-3 border-2 my-3 mr-3 text-center relative shadow-inner`"
       >
         <div
           class="row-span-1 text-xl self-center font-semibold border-b-2 max-h-10 whitespace-nowrap overflow-hidden text-ellipsis"
@@ -44,42 +49,53 @@
         </div>
       </router-link>
     </div>
-    <NavSection v-show="showProducts" position="footer" />
   </div>
+  <NavSection v-show="showProducts" position="footer" />
 </template>
 
 <script>
 import NavSection from '@/components/common/NavSection.vue'
-
+import { productStore } from '@/stores/app'
 export default {
   name: 'ProductList',
   data() {
-    return {
-      products: [],
-    }
-  },
-  props: {
-    viewProducts: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+    return {}
   },
   computed: {
     showProducts() {
-      return this.viewProducts && this.products.length
+      return productStore().isProductsShown && productStore().products.length
+    },
+    products() {
+      return productStore().products
     },
   },
   components: {
     NavSection: NavSection,
   },
+  watch: {
+    showProducts(value) {
+      if (value) {
+        this.$nextTick(() => {
+          const headerOffset = 120
+          const elementPosition =
+            this.$refs.productlist.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.scrollY - headerOffset
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          })
+        })
+      }
+    },
+  },
   beforeMount() {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(json => {
-        this.products = json
-        this.products.sort(() => 0.5 - Math.random())
-        console.log(this.products)
+        const products = json
+        products.sort(() => 0.5 - Math.random())
+        productStore().updateProducts(products)
         this.$nextTick(() => this.putRatingOnBooks())
       })
   },
