@@ -20,7 +20,7 @@
           >
             <button
               @click="showProducts"
-              :class="`absolute ${products.length && areProductsShown ? '-left-[50%]' : 'left-[50%] translate-x-[-50%] translate-y-4'} transition-all duration-100  inline-flex justify-center items-center py-3 px-5 text-lg font-normal text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300`"
+              :class="`animate-pulse absolute ${products.length && areProductsShown ? '-left-[50%]' : 'left-[50%] translate-x-[-50%] translate-y-4'} transition-all duration-100  inline-flex justify-center items-center py-3 px-5 text-lg font-normal text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300`"
             >
               Get started
               <svg

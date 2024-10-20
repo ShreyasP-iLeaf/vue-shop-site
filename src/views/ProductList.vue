@@ -31,17 +31,13 @@
           />
           <div class="flex flex-col justify-center items-center">
             <div class="text-2xl">${{ item.price }}</div>
-            <div
-              class="rating-container"
-              :id="`r-${item.id}`"
-              v-if="item.rating.rate"
-            >
-              <span class="rating-star"></span>
-              <span class="rating-star"></span>
-              <span class="rating-star"></span>
-              <span class="rating-star"></span>
-              <span class="rating-star"></span>
-              <span class="rating-count text-2xl"
+            <div class="text-2xl" :id="`r-${item.id}`" v-if="item.rating.rate">
+              <span class="inline-block before:content-['★']"></span>
+              <span class="inline-block before:content-['★']"></span>
+              <span class="inline-block before:content-['★']"></span>
+              <span class="inline-block before:content-['★']"></span>
+              <span class="inline-block before:content-['★']"></span>
+              <span class="rating-count text-[21px] pt-1"
                 >({{ item.rating.count }})</span
               >
             </div>
@@ -63,7 +59,9 @@ export default {
   },
   computed: {
     showProducts() {
-      return productStore().isProductsShown && productStore().products.length
+      return (
+        productStore().isProductsShown && productStore().products.length !== 0
+      )
     },
     products() {
       return productStore().products
@@ -105,14 +103,14 @@ export default {
         const ratingValue = each.rating.rate
         const ratingContainer = document.getElementById(`r-${each.id}`)
         if (ratingContainer) {
-          const ratingStars = ratingContainer.querySelectorAll(`.rating-star`)
+          const ratingStars = ratingContainer.querySelectorAll(`span`)
           // Calculate the number of stars to be filled
           const filledStars = Math.round(ratingValue * 2) / 2
 
           // Add the 'filled' class to the appropriate number of stars
           ratingStars.forEach((star, index) => {
             if (index < filledStars) {
-              star.classList.add('filled')
+              star.style.color = 'gold'
             }
           })
         }
@@ -122,22 +120,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.rating-container {
-  font-size: 24px;
-  display: flex;
-  .rating-star {
-    display: inline-block;
-    &.filled {
-      color: gold; /* Color for filled stars */
-    }
-    &::before {
-      content: '★';
-    }
-  }
-  .rating-count {
-    font-size: 21px;
-    padding-top: 3px;
-  }
-}
-</style>
+<style scoped lang="scss"></style>
