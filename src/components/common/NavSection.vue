@@ -44,6 +44,7 @@
             {{ cartValue }}
           </div>
           <svg
+            @click="openCart = !openCart"
             :class="`max-md:hidden ${cartValue ? 'animate-pulse' : ''}`"
             xmlns="http://www.w3.org/2000/svg"
             height="30px"
@@ -208,16 +209,20 @@
       <div class="col-span-1">Copyright © 2024</div>
       <div class="col-span-1 text-right">All rights reserved</div>
     </div>
+    <ShoppingCart :openCart="openCart" />
   </div>
 </template>
 
 <script>
+import ShoppingCart from '@/components/common/Cart.vue'
+
 import { cartStore } from '@/stores/app'
 export default {
   name: 'NavSection',
   data() {
     return {
       isMenuOpen: false,
+      openCart: false,
     }
   },
   props: {
@@ -228,6 +233,9 @@ export default {
       type: Number,
       required: false,
     },
+  },
+  components: {
+    ShoppingCart,
   },
   methods: {},
   watch: {
