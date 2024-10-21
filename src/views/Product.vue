@@ -97,9 +97,11 @@
               <div class="text-4xl mb-5">${{ product.price }}</div>
             </div>
             <button
-              v-if="ifAtleastOneItem(product) === -1"
+              v-if="
+                ifAtleastOneItem(product) === -1 && !(noOfCartItemsUnique > 3)
+              "
               @click="
-                cartItems.length <= 2
+                noOfCartItemsUnique <= 3
                   ? addProductToCart(product)
                   : (restrictBuy = true)
               "
@@ -158,16 +160,21 @@ export default {
     cartItems() {
       return cartStore().cart
     },
-    noOfCartItems() {
-      return cartStore().noOfItemsInCart
-    },
     cartValue() {
       return cartStore().noOfItemsInCart
     },
+    noOfCartItemsUnique() {
+      let uniqueObjects = {}
+      this.cartItems.forEach(obj => {
+        uniqueObjects[obj.id] = obj
+      })
+      let output = Object.values(uniqueObjects)
+      return output.length
+    },
   },
   watch: {
-    noOfCartItems(value) {
-      value <= 2 ? (this.restrictBuy = true) : (this.restrictBuy = false)
+    noOfCartItemsUnique(value) {
+      value <= 3 ? (this.restrictBuy = false) : (this.restrictBuy = true)
     },
   },
   methods: {
