@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 
 export const cartStore = defineStore('cart', () => {
   let cart = ref([])
+  let isCartOpen = ref(false)
   const noOfItemsInCart = computed(() => cart.value.length)
   function addToCart(newProdcut) {
     cart.value.push(newProdcut)
@@ -10,8 +11,18 @@ export const cartStore = defineStore('cart', () => {
   function updateCart(newProducts) {
     cart.value = newProducts
   }
+  function toggleCart(value) {
+    isCartOpen.value = value
+  }
 
-  return { cart, noOfItemsInCart, addToCart, updateCart }
+  return {
+    cart,
+    isCartOpen,
+    noOfItemsInCart,
+    addToCart,
+    updateCart,
+    toggleCart,
+  }
 })
 
 export const productStore = defineStore('products', () => {

@@ -88,14 +88,16 @@ export default {
     },
   },
   beforeMount() {
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(json => {
-        const products = json
-        products.sort(() => 0.5 - Math.random())
-        productStore().updateProducts(products)
-        this.$nextTick(() => this.putRatingOnBooks())
-      })
+    if (productStore().products.length === 0) {
+      fetch('https://fakestoreapi.com/products')
+        .then(res => res.json())
+        .then(json => {
+          const products = json
+          products.sort(() => 0.5 - Math.random())
+          productStore().updateProducts(products)
+          this.$nextTick(() => this.putRatingOnBooks())
+        })
+    }
   },
   methods: {
     putRatingOnBooks() {

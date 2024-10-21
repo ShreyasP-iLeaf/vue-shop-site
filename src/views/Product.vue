@@ -25,7 +25,7 @@
           <div class="inline-block cursor-pointer w-3">/</div>
           <div class="inline-block cursor-pointer w-3 p-3">Detail</div>
         </div>
-        <button class="relative h-[30px]">
+        <button class="relative h-[30px]" @click="openCart">
           <div
             :class="`md:hidden text-sm absolute right-0 -top-3 rounded-full bg-[#e8eaed] text-black w-5 h-5 ${cartValue ? 'animate-pulse' : ''}`"
           >
@@ -155,6 +155,9 @@ export default {
     },
   },
   methods: {
+    openCart() {
+      cartStore().toggleCart(true)
+    },
     noOfProductInCart(product) {
       let count = 0
       this.cartItems.forEach(item => (item.id === product.id ? count++ : null))

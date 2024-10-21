@@ -44,7 +44,7 @@
             {{ cartValue }}
           </div>
           <svg
-            @click="openCart = !openCart"
+            @click="isCartOpen ? closeCart() : openCart()"
             :class="`max-md:hidden ${cartValue ? 'animate-pulse' : ''}`"
             xmlns="http://www.w3.org/2000/svg"
             height="30px"
@@ -209,7 +209,7 @@
       <div class="col-span-1">Copyright © 2024</div>
       <div class="col-span-1 text-right">All rights reserved</div>
     </div>
-    <ShoppingCart :openCart="openCart" />
+    <ShoppingCart :position="position" />
   </div>
 </template>
 
@@ -222,22 +222,37 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      openCart: false,
+      browserWidth: null,
     }
   },
   props: {
     position: {
       type: String,
     },
-    appWidth: {
-      type: Number,
-      required: false,
+    openCartOutsideNav: {
+      type: Boolean,
     },
   },
   components: {
     ShoppingCart,
   },
-  methods: {},
+  created() {
+    window.addEventListener('resize', this.onResize)
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.onResize)
+  },
+  methods: {
+    onResize(event) {
+      this.browserWidth = event.target.innerWidth
+    },
+    openCart() {
+      cartStore().toggleCart(true)
+    },
+    closeCart() {
+      cartStore().toggleCart(false)
+    },
+  },
   watch: {
     appWidth() {
       if (this.appWidth > 768 && this.isMenuOpen) this.isMenuOpen = false
@@ -246,6 +261,12 @@ export default {
   computed: {
     cartValue() {
       return cartStore().noOfItemsInCart
+    },
+    appWidth() {
+      return this.browserWidth
+    },
+    isCartOpen() {
+      return cartStore().isCartOpen
     },
   },
 }
