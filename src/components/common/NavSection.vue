@@ -6,10 +6,12 @@
       <nav
         :class="`max-w-[1440px] grid ${position === 'footer' ? 'max-sm:grid-cols-1 max-sm:space-y-5 justify-center items-center max-md:grid-cols-3 grid-cols-5' : 'grid-cols-5'} w-full items-center justify-center`"
       >
-        <a
-          href="/"
+        <RouterLink
+          :to="{
+            name: 'home',
+          }"
           class="title col-span-1 text-left max-sm:text-center text-3xl"
-          >CutRateStore</a
+          >CutRateStore</RouterLink
         >
         <ul
           :class="`m-auto grid text-2xl  w-[75%] max-w-[400px] text-center ${position === 'header' ? 'max-md:hidden grid-cols-4 col-span-3' : 'grid-cols-1 md:grid-cols-4 md:col-span-3'}`"
@@ -17,7 +19,13 @@
           <li
             :class="`px-5 ${position === 'header' ? 'hover:scale-x-110 hover:scale-y-110 duration-100 ease-in-out' : 'my-1'}`"
           >
-            <a href="#">HOME</a>
+            <router-link
+              :to="{
+                name: 'home',
+              }"
+              href="#"
+              >HOME</router-link
+            >
           </li>
           <li
             :class="`px-5 ${position === 'header' ? 'hover:scale-x-110 hover:scale-y-110 duration-100 ease-in-out' : 'my-1'}`"
@@ -217,6 +225,7 @@
 import ShoppingCart from '@/components/common/Cart.vue'
 
 import { cartStore } from '@/stores/app'
+
 export default {
   name: 'NavSection',
   data() {

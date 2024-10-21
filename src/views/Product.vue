@@ -98,7 +98,11 @@
             </div>
             <button
               v-if="ifAtleastOneItem(product) === -1"
-              @click="addProductToCart(product)"
+              @click="
+                cartItems.length <= 2
+                  ? addProductToCart(product)
+                  : (restrictBuy = true)
+              "
               class="h-[52px] inline-block px-3 py-2 max-w-[200px] bg-black text-white text-xl self-center"
             >
               Add to cart
@@ -117,6 +121,9 @@
               </div>
               <button @click="addProductToCart(product)">+</button>
             </div>
+            <div clas="text-black" v-if="restrictBuy">
+              Can buy only 3 items at once
+            </div>
           </div>
         </div>
       </div>
@@ -133,6 +140,7 @@ export default {
   data() {
     return {
       product: null,
+      restrictBuy: false,
     }
   },
   components: {
@@ -150,8 +158,16 @@ export default {
     cartItems() {
       return cartStore().cart
     },
+    noOfCartItems() {
+      return cartStore().noOfItemsInCart
+    },
     cartValue() {
       return cartStore().noOfItemsInCart
+    },
+  },
+  watch: {
+    noOfCartItems(value) {
+      value <= 2 ? (this.restrictBuy = true) : (this.restrictBuy = false)
     },
   },
   methods: {

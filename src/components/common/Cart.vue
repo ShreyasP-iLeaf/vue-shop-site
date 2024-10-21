@@ -73,7 +73,7 @@
                 </div>
               </div>
               <div class="text-black bg-white text-2xl">
-                ${{ noOfProductInCart(item) * item.price }}
+                ${{ (noOfProductInCart(item) * item.price).toFixed(2) }}
               </div>
             </div>
           </div>
@@ -89,7 +89,6 @@
 
 <script>
 import { cartStore } from '@/stores/app'
-
 export default {
   name: 'ShoppingCart',
   data() {

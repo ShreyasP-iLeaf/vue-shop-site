@@ -16,5 +16,5 @@ export default defineConfig({
       ],
     },
   },
-  publicPath: import.meta.env.MODE === 'production' ? '/vue-shop-site/' : '/',
+  publicPath: import.meta.env === 'production' ? '/vue-shop-site/' : '/',
 })

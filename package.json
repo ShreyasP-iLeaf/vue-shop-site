@@ -10,10 +10,9 @@
     "test:unit": "vitest",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "gh-pages -d dist"
+    "deploy": "cd dist && copy index.html 404.html && cd .. && gh-pages -d dist"
   },
   "dependencies": {
-    "click-outside-vue3": "^4.0.1",
     "pinia": "^2.2.4",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
@@ -29,9 +28,7 @@
     "eslint-plugin-vue": "^9.29.0",
     "gh-pages": "^6.2.0",
     "jsdom": "^25.0.1",
-    "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "sass": "^1.80.1",
     "tailwindcss": "^3.4.14",
     "vite": "^5.4.8",
     "vite-plugin-vue-devtools": "^7.4.6",
