@@ -233,6 +233,7 @@ function closeCart() {
       </nav>
     </div>
     <div
+      v-if="position === 'header'"
       :class="`h-auto text-2xl w-full absolute transition-all duration-500 bg-[#f1f4f1] ${isMenuOpen && position === 'header' ? 'max-md:block -left-0' : '-left-full'} z-10`"
     >
       <ul class="cursor-pointer">
@@ -250,12 +251,15 @@ function closeCart() {
         </li>
       </ul>
     </div>
-    <div
-      :class="`${position === 'header' ? 'hidden' : ' bg-[#f1f4f1] text-[#424B4A] p-5 md:px-10 lg:px-10 xl:px-10 border-t-2 grid grid-cols-2 m-auto'}`"
-    >
-      <div class="col-span-1">Copyright © 2024</div>
-      <div class="col-span-1 text-right">All rights reserved</div>
+    <div v-if="position === 'footer'" class="bg-[#f1f4f1] border-t-2">
+      <div
+        class="max-w-[1440px] m-auto text-[#424B4A] p-5 md:px-10 min-[1440px]:px-0 grid grid-cols-2 m-auto'}`"
+      >
+        <div class="col-span-1">Copyright © 2024</div>
+        <div class="col-span-1 text-right">All rights reserved</div>
+      </div>
     </div>
+
     <ShoppingCart v-if="position === 'header'" />
   </div>
 </template>

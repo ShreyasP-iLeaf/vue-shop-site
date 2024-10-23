@@ -1,10 +1,10 @@
 <template>
-  <div class="relative min-h-auto">
+  <div class="relative">
     <div class="sticky top-0 z-10">
       <NavSection position="header" />
     </div>
     <router-view />
-    <NavSection position="'footer'" />
+    <NavSection position="footer" />
   </div>
 </template>
 
