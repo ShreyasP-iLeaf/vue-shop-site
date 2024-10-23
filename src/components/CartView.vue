@@ -4,7 +4,7 @@
     :class="`${open ? 'fixed inset-0 flex z-40 bg-[#0006] bg-opacity-75 ' : 'max-w-0'} `"
   >
     <div
-      class="absolute transition-all duration-700 top-[80px] md:top-[100px] lg:top-[120px] h-svh z-100 bg-[#f1f4f1] right-0 flex-row"
+      class="absolute transition-all duration-300 top-[80px] md:top-[100px] lg:top-[120px] h-svh z-100 bg-[#f1f4f1] right-0 flex-row"
       :class="[open ? 'max-w-lg' : 'max-w-0']"
     >
       <div

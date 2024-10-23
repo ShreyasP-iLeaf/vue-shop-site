@@ -12,16 +12,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="about" class="p-5 md:p-10">
+  <div ref="about" class="p-5 md:px-10 md:py-24 md:pb-40">
     <div class="max-w-[1440px] mx-auto">
       <div class="mt-10 md:my-10 text-[#025048]">
         <div class="text-xl sm:text-2xl">ABOUT CERAMIC SHOP</div>
-        <div class="text-3xl sm:text-5xl py-5 font-bold max-w-[80%]">
+        <div class="text-3xl sm:text-6xl py-5 font-bold w-full md:max-w-[80%]">
           The versatility of ceramics is what makes them truly remarkable, with
           their presence in various forms such as stoneware and porcelain.
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-15 lg:gap-1=20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 lg:gap-1=20">
         <img
           class="w-full md:min-h-[700px]"
           src="../assets/images/about-01.jpg"

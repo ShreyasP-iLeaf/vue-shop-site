@@ -17,20 +17,20 @@ onMounted(() => {
 <template>
   <div
     ref="banner"
-    class="bg-[#025048] md:h-[700px] p-5 pb-10 md:p-10 text-white"
+    class="bg-[#025048] md:h-[100vh] p-5 pb-10 md:p-10 text-white"
   >
     <div class="max-w-[1440px] m-auto grid grid-cols-1 md:grid-cols-2">
       <div
         class="flex flex-col justify-center text-center md:justify-items-center md:text-left items-center mb-10"
       >
-        <div class="">
+        <div class="leading-[72px]">
           <div class="text-xl sm:text-2xl">WELCOME TO CERAMIC SHOP</div>
           <h1
-            class="text-3xl sm:text-7xl py-5 font-semibold max-w-[80%] m-auto md:ml-0"
+            class="text-4xl sm:text-8xl py-5 font-semibold max-w-full m-auto md:ml-0"
           >
             Elevate Your Space with Ceramic Elegance.
           </h1>
-          <p class="text-md sm:text-2xl font-bold mb-5">
+          <p class="text-xl sm:text-3xl font-bold mb-5">
             Starting from just $149.00
           </p>
         </div>
@@ -42,7 +42,7 @@ onMounted(() => {
       </div>
       <div class="flex justify-end">
         <div
-          class="h-[700px] w-full md:w-[68%] relative"
+          class="h-[101vh] w-full md:w-[68%] relative"
           :style="{
             backgroundImage: `url(${BannerImage1})`,
             backgroundRepeat: 'no-repeat',
