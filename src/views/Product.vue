@@ -136,7 +136,7 @@
 
 <script>
 import { cartStore } from '@/stores/app'
-import NavSection from '@/components/common/NavSection.vue'
+import NavSection from '@/components/NavSection.vue'
 export default {
   name: 'ProductPage',
   data() {

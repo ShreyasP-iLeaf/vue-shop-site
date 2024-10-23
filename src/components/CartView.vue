@@ -1,15 +1,15 @@
 <template>
   <div
     class="transition-all duration-700 absolute top-0 right-0 h-[100vh]"
-    :class="`${open ? 'max-w-full fixed inset-0 flex z-40 bg-[#0006] bg-opacity-75 ' : 'max-w-0'} `"
+    :class="`${open ? 'fixed inset-0 flex z-40 bg-[#0006] bg-opacity-75 ' : 'max-w-0'} `"
   >
     <div
-      class="absolute top-[80px] md:top-[100px] lg:top-[120px] h-svh z-100 bg-[#f1f4f1] right-0 flex-row"
-      :class="[open ? 'max-w-xl' : 'max-w-0']"
+      class="absolute transition-all duration-700 top-[80px] md:top-[100px] lg:top-[120px] h-svh z-100 bg-[#f1f4f1] right-0 flex-row"
+      :class="[open ? 'max-w-lg' : 'max-w-0']"
     >
       <div
         ref="content"
-        class="transition-all duration-700 h-full bg-[#f1f4f1] flex overflow-hidden items-start justify-center"
+        class="h-full bg-[#f1f4f1] flex overflow-hidden items-start justify-center"
       >
         <div
           class="w-[360px] sm:w-[500px] text-center delay-500 text-[#025048] font-bold text-xl p-5 pb-0"

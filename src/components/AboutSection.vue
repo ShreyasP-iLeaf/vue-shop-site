@@ -1,7 +1,18 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue'
+const about = ref(null)
+
+const emit = defineEmits(['aboutSection'])
+
+onMounted(() => {
+  if (about.value) {
+    emit('aboutSection', about)
+  }
+})
+</script>
 
 <template>
-  <div class="p-5 md:p-10">
+  <div ref="about" class="p-5 md:p-10">
     <div class="max-w-[1440px] mx-auto">
       <div class="mt-10 md:my-10 text-[#025048]">
         <div class="text-xl sm:text-2xl">ABOUT CERAMIC SHOP</div>

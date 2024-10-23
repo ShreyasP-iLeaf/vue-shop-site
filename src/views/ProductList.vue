@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import NavSection from '@/components/common/NavSection.vue'
+import NavSection from '@/components/NavSection.vue'
 import { productStore } from '@/stores/app'
 export default {
   name: 'ProductList',

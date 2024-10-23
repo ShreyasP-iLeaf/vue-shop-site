@@ -1,9 +1,24 @@
 <script setup>
-import HeroImage from '../assets/images/hero-01.jpg'
+import BannerImage1 from '../assets/images/hero-01.jpg'
+import BannerImage2 from '../assets/images/hero-02.jpg'
+import { ref, onMounted, defineEmits } from 'vue'
+
+const banner = ref(null)
+
+const emit = defineEmits(['bannerSection'])
+
+onMounted(() => {
+  if (banner.value) {
+    emit('bannerSection', banner)
+  }
+})
 </script>
 
 <template>
-  <div class="bg-[#025048] md:h-[700px] p-5 md:p-10 md:pb-0 text-white">
+  <div
+    ref="banner"
+    class="bg-[#025048] md:h-[700px] p-5 pb-10 md:p-10 text-white"
+  >
     <div class="max-w-[1440px] m-auto grid grid-cols-1 md:grid-cols-2">
       <div
         class="flex flex-col justify-center text-center md:justify-items-center md:text-left items-center mb-10"
@@ -29,15 +44,15 @@ import HeroImage from '../assets/images/hero-01.jpg'
         <div
           class="h-[700px] w-full md:w-[68%] relative"
           :style="{
-            backgroundImage: `url(${HeroImage})`,
+            backgroundImage: `url(${BannerImage1})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
           }"
         >
           <img
             class="absolute md:translate-x-[-50%] -translate-x-1/2 left-1/2 md:left-0 -translate-y-1/2 top-1/2"
-            src="../assets/images/hero-02.jpg"
-            alt=""
+            :src="`${BannerImage2}`"
+            alt="banner-image"
           />
         </div>
       </div>
