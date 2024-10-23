@@ -1,27 +1,31 @@
 <template>
-  <div>
+  <div
+    class="transition-all duration-700 absolute top-0 right-0 h-[100vh]"
+    :class="`${open ? 'max-w-full fixed inset-0 flex z-40 bg-[#0006] bg-opacity-75 ' : 'max-w-0'} `"
+  >
     <div
-      class="absolute top-25 h-screen z-60 bg-black right-0 flex-row"
-      :class="[position === 'footer' ? 'top-[90px] md:top-[120px]' : '']"
+      class="absolute top-[80px] md:top-[100px] lg:top-[120px] h-svh z-100 bg-[#f1f4f1] right-0 flex-row"
+      :class="[open ? 'max-w-xl' : 'max-w-0']"
     >
       <div
         ref="content"
-        class="transition-all duration-700 h-full bg-black flex overflow-hidden items-start justify-center"
-        :class="[open ? 'max-w-lg' : 'max-w-0']"
+        class="transition-all duration-700 h-full bg-[#f1f4f1] flex overflow-hidden items-start justify-center"
       >
         <div
-          class="w-[360px] sm:w-[500px] text-center delay-500 text-white font-bold text-xl p-5 pb-0"
+          class="w-[360px] sm:w-[500px] text-center delay-500 text-[#025048] font-bold text-xl p-5 pb-0"
         >
           <div class="flex relative flex-row justify-between items-center">
-            <h1 class="flex-grow text-2xl sm:text-3xl p-3">Shopping Cart</h1>
+            <h1 class="flex-grow text-2xl sm:text-3xl p-3 text-left">
+              Shopping Cart
+            </h1>
             <svg
               @click="closeCart"
-              :class="`inline-block md:hidden cursor-pointer`"
+              :class="`md:hidden inline-block cursor-pointer`"
               xmlns="http://www.w3.org/2000/svg"
               height="30px"
               viewBox="0 -960 960 960"
               width="30px"
-              fill="#FFFFFF"
+              fill="#025048"
             >
               <path
                 d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
@@ -32,16 +36,16 @@
           <div
             v-for="item in cartItemsUnique"
             :key="`product-${item.id}`"
-            class="text-black bg-white"
+            class="text-black bg-[#f1f4f1]"
           >
             <div
               class="text-left max-w-[350px] md:max-w-full whitespace-nowrap overflow-x-hidden text-ellipsis p-3 pb-0"
             >
               {{ item.title }}
             </div>
-            <div class="bg-white p-3 flex justify-between items-center">
+            <div class="bg-[#f1f4f1] p-3 flex justify-between items-center">
               <div
-                class="bg-white max-w-[450px] text-black flex justify-between align-middle"
+                class="bg-[#f1f4f1] max-w-[450px] text-black flex justify-between align-middle"
               >
                 <img
                   class="w-[100px] max-h-[100px] mx-2 object-contain"
@@ -59,7 +63,7 @@
                       -
                     </button>
                     <div
-                      class="bg-white text-black h-full border-black content-center"
+                      class="bg-[#f1f4f1] text-black h-full border-black content-center"
                     >
                       {{ noOfProductInCart(item) }}
                     </div>
@@ -72,14 +76,23 @@
                   </div>
                 </div>
               </div>
-              <div class="text-black bg-white text-2xl">
+              <div class="text-black bg-[#f1f4f1] text-2xl">
                 ${{ (noOfProductInCart(item) * item.price).toFixed(2) }}
               </div>
             </div>
           </div>
-          <div class="flex justify-between bg-black">
+          <div
+            v-if="cartItems.length"
+            class="flex justify-between bg-[#f1f4f1]"
+          >
             <div class="p-3 text-2xl text-left">Total</div>
             <div class="p-3 text-2xl text-right">${{ getTotal() }}</div>
+          </div>
+          <div
+            v-else
+            class="text-black p-3 flex justify-start align-middle h-[100vh]"
+          >
+            <div>No items in cart</div>
           </div>
         </div>
       </div>
@@ -94,12 +107,8 @@ export default {
   data() {
     return {
       open: false,
+      dimmer: true,
     }
-  },
-  props: {
-    position: {
-      type: String,
-    },
   },
   computed: {
     cartItems() {
@@ -118,7 +127,8 @@ export default {
     },
   },
   watch: {
-    isCartOpen() {
+    isCartOpen(value) {
+      console.log(value)
       this.toggle()
     },
   },
@@ -132,6 +142,8 @@ export default {
     },
     toggle() {
       this.open = !this.open
+      if (this.open) document.body.style.overflowY = 'hidden'
+      else document.body.style.overflowY = 'auto'
     },
     closeCart() {
       cartStore().toggleCart(false)

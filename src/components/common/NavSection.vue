@@ -1,7 +1,46 @@
+<script setup>
+// import ShoppingCart from '@/components/common/Cart.vue'
+import { cartStore } from '@/stores/app'
+import ShoppingCart from '../common/Cart.vue'
+import { ref, computed, defineProps, onMounted, onUnmounted, watch } from 'vue'
+const isMenuOpen = ref(null)
+const browserWidth = ref(null)
+
+const appWidth = computed(() => browserWidth.value)
+const cartValue = computed(() => cartStore().noOfItemsInCart)
+const isCartOpen = computed(() => cartStore().isCartOpen)
+
+const { position } = defineProps(['position'])
+
+onMounted(() => {
+  window.addEventListener('resize', onResize)
+})
+onUnmounted(() => {
+  window.addEventListener('resize', onResize)
+})
+
+watch(appWidth, () => {
+  console.log(appWidth.value, isMenuOpen.value)
+  if (appWidth.value > 768 && isMenuOpen.value) isMenuOpen.value = false
+  else return
+})
+
+const onResize = event => {
+  browserWidth.value = event.target.innerWidth
+}
+
+function openCart() {
+  cartStore().toggleCart(true)
+}
+function closeCart() {
+  cartStore().toggleCart(false)
+}
+</script>
+
 <template>
-  <div :class="`${position === 'header' ? 'sticky top-0' : ''}`">
+  <div :class="[position === 'header' ? 'relative' : '']">
     <div
-      :class="`transition-all font-roboto ${position === 'header' ? 'bg-black text-white h-[80px] md:h-[100px] lg:h-[120px] sticky top-0 z-50' : 'bg-[#f1f4f1] text-black h-auto min-h-[100px] p-10 '} flex justify-center items-center px-5 md:px-10`"
+      :class="`transition-all font-roboto ${position === 'header' ? 'bg-[#025048] text-white h-[80px] md:h-[100px] lg:h-[120px] sticky top-0 z-50' : 'bg-[#f1f4f1] text-black h-auto min-h-[100px] p-10 '} flex justify-center items-center px-5 md:px-10`"
     >
       <nav
         :class="`max-w-[1440px] grid ${position === 'footer' ? 'max-sm:grid-cols-1 max-sm:space-y-5 justify-center items-center max-md:grid-cols-3 grid-cols-5' : 'grid-cols-5'} w-full items-center justify-center`"
@@ -11,7 +50,7 @@
             name: 'home',
           }"
           class="title col-span-1 text-left max-sm:text-center text-3xl"
-          >CutRateStore</RouterLink
+          >CeramicShop</RouterLink
         >
         <ul
           :class="`m-auto grid text-2xl  w-[75%] max-w-[400px] text-center ${position === 'header' ? 'max-md:hidden grid-cols-4 col-span-3' : 'grid-cols-1 md:grid-cols-4 md:col-span-3'}`"
@@ -217,68 +256,8 @@
       <div class="col-span-1">Copyright © 2024</div>
       <div class="col-span-1 text-right">All rights reserved</div>
     </div>
-    <ShoppingCart :position="position" />
+    <ShoppingCart v-if="position === 'header'" />
   </div>
 </template>
-
-<script>
-import ShoppingCart from '@/components/common/Cart.vue'
-
-import { cartStore } from '@/stores/app'
-
-export default {
-  name: 'NavSection',
-  data() {
-    return {
-      isMenuOpen: false,
-      browserWidth: null,
-    }
-  },
-  props: {
-    position: {
-      type: String,
-    },
-    openCartOutsideNav: {
-      type: Boolean,
-    },
-  },
-  components: {
-    ShoppingCart,
-  },
-  created() {
-    window.addEventListener('resize', this.onResize)
-  },
-  unmounted() {
-    window.removeEventListener('resize', this.onResize)
-  },
-  methods: {
-    onResize(event) {
-      this.browserWidth = event.target.innerWidth
-    },
-    openCart() {
-      cartStore().toggleCart(true)
-    },
-    closeCart() {
-      cartStore().toggleCart(false)
-    },
-  },
-  watch: {
-    appWidth() {
-      if (this.appWidth > 768 && this.isMenuOpen) this.isMenuOpen = false
-    },
-  },
-  computed: {
-    cartValue() {
-      return cartStore().noOfItemsInCart
-    },
-    appWidth() {
-      return this.browserWidth
-    },
-    isCartOpen() {
-      return cartStore().isCartOpen
-    },
-  },
-}
-</script>
 
 <style scoped lang="scss"></style>
