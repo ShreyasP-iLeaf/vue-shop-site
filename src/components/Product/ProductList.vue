@@ -1,5 +1,5 @@
 <template>
-  <div ref="about" class="p-5 lg:px-10 lg:py-24 lg:pb-40">
+  <div ref="shop" class="p-5 lg:px-10 lg:py-24 lg:pb-40">
     <div class="max-w-[1440px] mx-auto">
       <div class="mt-10 lg:my-10 text-[#025048]">
         <div class="text-xl sm:text-2xl">Most Popular</div>
@@ -23,4 +23,14 @@
 <script setup>
 import productData from './data.json'
 import ProductCard from './ProductCard.vue'
+import { ref, onMounted } from 'vue'
+
+const emit = defineEmits(['productSection'])
+const shop = ref(null)
+
+onMounted(() => {
+  if (shop.value) {
+    emit('productSection', shop)
+  }
+})
 </script>

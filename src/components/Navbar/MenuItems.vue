@@ -25,7 +25,15 @@
       >
         <a>ABOUT</a>
       </li>
-      <li class="px-5 py-3 hover:bg-[#fafafb]">
+      <li
+        class="px-5 py-3 hover:bg-[#fafafb]"
+        @click="
+          () => {
+            emit('closeMenu')
+            productsRef ? productsRef.scrollIntoView() : null
+          }
+        "
+      >
         <a href="">SHOP</a>
       </li>
       <li class="px-5 py-3 hover:bg-[#fafafb]">
@@ -38,10 +46,11 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue'
 
-const { isMenuOpen, bannerRef, aboutRef } = defineProps([
+const { isMenuOpen, bannerRef, aboutRef, productsRef } = defineProps([
   'isMenuOpen',
   'bannerRef',
   'aboutRef',
+  'productsRef',
 ])
 
 const emit = defineEmits(['closeMenu'])

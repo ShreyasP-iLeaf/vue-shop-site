@@ -5,6 +5,7 @@
         position="header"
         :bannerRef="bannerRef ? bannerRef.value : null"
         :aboutRef="aboutRef ? aboutRef.value : null"
+        :productsRef="productsRef ? productsRef.value : null"
       />
     </div>
     <router-view v-slot="{ Component }">
@@ -12,11 +13,13 @@
         :is="Component"
         @bannerSection="value => (value ? setBannerRef(value) : null)"
         @aboutSection="value => (value ? setAboutRef(value) : null)"
+        @productSection="value => (value ? setProductsRef(value) : null)"
       />
     </router-view>
     <NavSection
       :bannerRef="bannerRef ? bannerRef.value : null"
       :aboutRef="aboutRef ? aboutRef.value : null"
+      :productsRef="productsRef ? productsRef.value : null"
       position="footer"
     />
     <CartDrawer />
@@ -32,11 +35,15 @@ import { cartStore } from './stores/app'
 const isCartOpen = computed(() => cartStore().isCartOpen)
 const bannerRef = ref(null)
 const aboutRef = ref(null)
+const productsRef = ref(null)
 
 function setBannerRef(val) {
   bannerRef.value = val
 }
 function setAboutRef(val) {
   aboutRef.value = val
+}
+function setProductsRef(val) {
+  productsRef.value = val
 }
 </script>

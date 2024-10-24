@@ -10,10 +10,11 @@ const browserWidth = ref(null)
 
 const appWidth = computed(() => browserWidth.value)
 
-const { position, bannerRef, aboutRef } = defineProps([
+const { position, bannerRef, aboutRef, productsRef } = defineProps([
   'position',
   'bannerRef',
   'aboutRef',
+  'productsRef',
 ])
 
 onMounted(() => {
@@ -24,7 +25,6 @@ onUnmounted(() => {
 })
 
 watch(appWidth, () => {
-  console.log(appWidth.value, isMenuOpen.value)
   if (appWidth.value > 768 && isMenuOpen.value) isMenuOpen.value = false
   else return
 })
@@ -77,7 +77,12 @@ const onResize = event => {
           <li
             :class="`px-5 ${position === 'header' ? 'hover:scale-x-110 hover:scale-y-110 duration-100 ease-in-out' : 'my-1'}`"
           >
-            <a class="cursor-pointer" href="#">SHOP</a>
+            <a
+              @click="productsRef.scrollIntoView()"
+              class="cursor-pointer"
+              href="#"
+              >SHOP</a
+            >
           </li>
           <li
             :class="`px-5 ${position === 'header' ? 'hover:scale-x-110 hover:scale-y-110 duration-100 ease-in-out' : 'my-1'}`"
@@ -100,6 +105,7 @@ const onResize = event => {
       :isMenuOpen="isMenuOpen"
       :aboutRef="aboutRef"
       :bannerRef="bannerRef"
+      :productsRef="productsRef"
       @closeMenu="() => (isMenuOpen = false)"
     />
     <div v-if="position === 'footer'" class="bg-[#f1f4f1] border-t-2">

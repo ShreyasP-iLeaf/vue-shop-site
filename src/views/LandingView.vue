@@ -7,7 +7,9 @@
       @aboutSection="val => (val ? emit('aboutSection', val) : null)"
     />
     <ProductCategory />
-    <ProductList />
+    <ProductList
+      @productSection="val => (val ? emit('productSection', val) : null)"
+    />
   </div>
 </template>
 
@@ -17,7 +19,7 @@ import AboutView from '@/components/AboutSection.vue'
 import ProductCategory from '@/components/Category/ProductCategory.vue'
 import ProductList from '../components/Product/ProductList.vue'
 
-const emit = defineEmits(['bannerSection', 'aboutSection'])
+const emit = defineEmits(['bannerSection', 'aboutSection', 'productSection'])
 </script>
 
 <style scoped lang="scss"></style>
