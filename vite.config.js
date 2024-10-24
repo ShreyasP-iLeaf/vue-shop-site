@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/vue-shop-site/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {

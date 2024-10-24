@@ -131,12 +131,12 @@
       </div>
     </div>
   </transition>
-  <NavSection v-show="product" position="footer" />
+  <!-- <NavSection v-show="product" position="footer" /> -->
 </template>
 
 <script>
 import { cartStore } from '@/stores/app'
-import NavSection from '@/components/NavSection.vue'
+// import NavSection from '@/components/NavbarSection/NavSection.vue'
 export default {
   name: 'ProductPage',
   data() {
@@ -146,7 +146,7 @@ export default {
     }
   },
   components: {
-    NavSection,
+    // NavSection,
   },
   beforeMount() {
     fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)

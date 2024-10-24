@@ -14,7 +14,7 @@
 <script setup>
 import BannerSection from '@/components/BannerSection.vue'
 import AboutView from '@/components/AboutSection.vue'
-import ProductCategory from '@/components/CategorySection/ProductCategory.vue'
+import ProductCategory from '@/components/Category/ProductCategory.vue'
 
 const emit = defineEmits(['bannerSection', 'aboutSection'])
 </script>

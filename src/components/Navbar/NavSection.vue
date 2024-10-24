@@ -1,8 +1,10 @@
 <script setup>
-import ShoppingCart from './CartSection.vue'
+import CartDrawer from '../Cart/CartDrawer.vue'
+import CartIcon from '../Cart/CartIcon.vue'
+
 import SocialMedia from './SocialMedia.vue'
-import CartIcon from './CartIcon.vue'
 import MenuItems from './MenuItems.vue'
+
 import { ref, computed, defineProps, onMounted, onUnmounted, watch } from 'vue'
 const isMenuOpen = ref(null)
 const browserWidth = ref(null)
@@ -109,7 +111,7 @@ const onResize = event => {
         <div class="col-span-1 text-right">All rights reserved</div>
       </div>
     </div>
-    <ShoppingCart v-if="position === 'header'" />
+    <CartDrawer v-if="position === 'header'" />
   </div>
 </template>
 

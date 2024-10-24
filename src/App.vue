@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import NavSection from './components/NavSection.vue'
+import NavSection from './components/Navbar/NavSection.vue'
 import { ref } from 'vue'
 
 const bannerRef = ref(null)

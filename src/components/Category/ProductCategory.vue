@@ -8,7 +8,7 @@
       <div class="flex flex-col justify-center">
         <div class="w-full">
           <div class="text-xl sm:text-2xl">THE BEST OF CERAMICS</div>
-          <h1 class="text-3xl sm:text-6xl py-5 font-bold mb-3">
+          <h1 class="text-3xl sm:text-6xl py-5 font-bold lg:mb-3">
             Our Products Category
           </h1>
           <p class="text-xl sm:text-2xl mb-10">
