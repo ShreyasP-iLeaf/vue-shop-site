@@ -3,8 +3,7 @@
     <div
       class="w-full h-[380px] mb-5 relative cursor-pointer"
       :style="{
-        backgroundImage: `url(
-          '/vue-shop-site/src/assets/images/${details.images[0]}')`,
+        backgroundImage: `url(${getImageURL})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -76,15 +75,26 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue'
+import { defineProps, ref, computed } from 'vue'
 import { cartStore } from '@/stores/app'
 
 const { details } = defineProps(['details'])
-
+// const imagePath = computed(
+//   () => 'url(' + require(`../../assets/images/${details.images[0]}`) + ')',
+// )
+// console.log(imagePath)
 const isTooltipShown = ref(false)
 const isCartShown = ref(false)
 const isProductAdded = ref(false)
 
+const getImageURL = computed(() => {
+  const url = new URL(
+    `../../assets/images/${details.images[0]}`,
+    import.meta.url,
+  ).href
+  console.log(url)
+  return url
+})
 function showTooltip(val) {
   isTooltipShown.value = val
 }
