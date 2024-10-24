@@ -16,7 +16,7 @@ onMounted(() => {
     <div class="max-w-[1500px] mx-auto">
       <div class="mt-10 lg:my-10 text-[#025048]">
         <div class="text-xl sm:text-2xl">ABOUT CERAMIC SHOP</div>
-        <div class="text-3xl sm:text-6xl py-5 font-bold w-full lg:max-w-[90%]">
+        <div class="text-3xl lg:text-6xl py-5 font-bold w-full lg:max-w-[90%]">
           The versatility of ceramics is what makes them truly remarkable, with
           their presence in various forms such as stoneware and porcelain.
         </div>
