@@ -46,11 +46,11 @@
       </router-link>
     </div>
   </div>
-  <NavSection v-show="showProducts" position="footer" />
+  <!-- <NavSection v-show="showProducts" position="footer" /> -->
 </template>
 
 <script>
-import NavSection from '@/components/NavbarSection/NavSection.vue'
+// import NavSection from '@/components/NavbarSection/NavSection.vue'
 import { productStore } from '@/stores/app'
 export default {
   name: 'ProductList',
@@ -68,7 +68,7 @@ export default {
     },
   },
   components: {
-    NavSection: NavSection,
+    // NavSection: NavSection,
   },
   watch: {
     showProducts(value) {

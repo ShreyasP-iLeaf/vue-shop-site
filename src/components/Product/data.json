@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Ceramic Cup",
+    "lastPrice": 237,
+    "currentPrice": 189,
+    "category": "Ceramic",
+    "images": ["ceramic-cup-01-300x300.jpg"]
+  },
+  {
+    "id": 2,
+    "name": "Ceramic Planter",
+    "lastPrice": 349,
+    "currentPrice": 299,
+    "category": "Ceramic",
+    "images": ["ceramic-planter-01-300x300.jpg"]
+  },
+  {
+    "id": 3,
+    "name": "Ceramic Plates",
+    "lastPrice": 179,
+    "currentPrice": 119,
+    "category": "Ceramic",
+    "images": ["product-01-300x300.jpg"]
+  },
+  {
+    "id": 4,
+    "name": "Ceramic Plates and Bowls",
+    "lastPrice": 249,
+    "currentPrice": 209,
+    "category": "Ceramic",
+    "images": ["product-02-300x300.jpg"]
+  },
+  {
+    "id": 5,
+    "name": "Ceramic Plates and Spoons",
+    "lastPrice": 349,
+    "currentPrice": 299,
+    "category": "Ceramic",
+    "images": ["product-07-300x300.jpg"]
+  },
+  {
+    "id": 6,
+    "name": "Ceramic Vases and Planters",
+    "lastPrice": 247,
+    "currentPrice": 217,
+    "category": "Pottery",
+    "images": ["contact-01-300x300.jpg"]
+  }
+]

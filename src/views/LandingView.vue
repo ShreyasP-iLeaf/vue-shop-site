@@ -7,7 +7,7 @@
       @aboutSection="val => (val ? emit('aboutSection', val) : null)"
     />
     <ProductCategory />
-    <div class="bg-white h-20"></div>
+    <ProductList />
   </div>
 </template>
 
@@ -15,6 +15,7 @@
 import BannerSection from '@/components/BannerSection.vue'
 import AboutView from '@/components/AboutSection.vue'
 import ProductCategory from '@/components/Category/ProductCategory.vue'
+import ProductList from '../components/Product/ProductList.vue'
 
 const emit = defineEmits(['bannerSection', 'aboutSection'])
 </script>

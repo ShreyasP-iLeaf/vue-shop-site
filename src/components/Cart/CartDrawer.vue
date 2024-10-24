@@ -1,26 +1,28 @@
 <template>
   <div
     class="transition-all duration-700 absolute top-0 right-0 h-[100vh]"
-    :class="`${open ? 'fixed inset-0 flex z-40 bg-[#0006] bg-opacity-75 ' : 'max-w-0'} `"
+    :class="`${open ? 'sticky inset-0 flex z-40 bg-[#0006] bg-opacity-75 ' : 'max-w-0'} `"
   >
     <div
-      class="absolute transition-all duration-300 top-[80px] md:top-[100px] lg:top-[120px] h-svh z-100 bg-[#f1f4f1] right-0 flex-row"
+      class="absolute transition-all duration-300 top-0 h-[100vh] z-100 bg-white right-0 flex-row"
       :class="[open ? 'max-w-lg' : 'max-w-0']"
     >
       <div
-        ref="content"
-        class="h-full bg-[#f1f4f1] flex overflow-hidden items-start justify-center"
+        class="h-full bg-white flex overflow-hidden items-start justify-center"
       >
         <div
-          class="w-[360px] sm:w-[500px] text-center delay-500 text-[#025048] font-bold text-xl p-5 pb-0"
+          ref="content"
+          class="w-[400px] sm:w-[500px] relative flex flex-col h-full text-center delay-500 text-[#025048] font-bold text-xl pb-0"
         >
-          <div class="flex relative flex-row justify-between items-center">
-            <h1 class="flex-grow text-2xl sm:text-3xl p-3 text-left">
+          <div
+            class="flex relative flex-row justify-between items-center border-b-2 mb-5"
+          >
+            <h1 class="text-xl sm:text-2xl p-5 pr-0 text-left">
               Shopping Cart
             </h1>
             <svg
               @click="closeCart"
-              :class="`md:hidden inline-block cursor-pointer`"
+              :class="`mr-5 cursor-pointer`"
               xmlns="http://www.w3.org/2000/svg"
               height="30px"
               viewBox="0 -960 960 960"
@@ -34,65 +36,85 @@
           </div>
 
           <div
-            v-for="item in cartItemsUnique"
-            :key="`product-${item.id}`"
-            class="text-black bg-[#f1f4f1]"
+            v-if="cartItems.length"
+            class="absolute w-full bottom-0 bg-white"
           >
-            <div
-              class="text-left max-w-[350px] md:max-w-full whitespace-nowrap overflow-x-hidden text-ellipsis p-3 pb-0"
-            >
-              {{ item.title }}
+            <div class="flex border-y-2 flex-row justify-between">
+              <div class="p-3 px-5 text-2xl text-left text-[#025048]">
+                Subtotal:
+              </div>
+              <div class="p-3 px-5 text-xl text-right text-[#424b4a]">
+                ${{ getTotal() }}
+              </div>
             </div>
-            <div class="bg-[#f1f4f1] p-3 flex justify-between items-center">
-              <div
-                class="bg-[#f1f4f1] max-w-[450px] text-black flex justify-between align-middle"
+            <div class="p-5">
+              <button
+                class="block mb-3 w-full m-auto py-2 border-[#025048] border-2 hover:text-white hover:bg-[#025048]"
               >
-                <img
-                  class="w-[100px] max-h-[100px] mx-2 object-contain"
-                  :src="item.image"
-                  :alt="`product-${item.id} image`"
-                />
-                <div class="flex items-center justify-around">
-                  <div
-                    class="grid grid-cols-3 text-center mx-4 w-full max-h-[50px] max-w-[150px] px-0 py-0 self-center text-white bg-black text-xl"
-                  >
-                    <button
-                      @click="removeProductFromCart(item)"
-                      class="py-2 px-3"
-                    >
-                      -
-                    </button>
+                VIEW CART
+              </button>
+              <button
+                class="block w-full m-auto py-2 border-[#025048] border-2 hover:text-white hover:bg-[#025048]"
+              >
+                CHECKOUT
+              </button>
+            </div>
+          </div>
+          <div class="max-h-[calc(100vh-300px)] overflow-y-scroll">
+            <div
+              v-for="item in cartItemsUnique"
+              :key="`product-${item.id}`"
+              class="text-black bg-[#f1f4f1]"
+            >
+              <div class="bg-white p-5 flex justify-between items-center">
+                <div class="bg-white max-w-[450px flex">
+                  <img
+                    class="w-[100px] max-h-[100px] object-contain"
+                    :src="`/vue-shop-site/src/assets/images/${item.images[0]}`"
+                    :alt="`product-${item.id} image`"
+                  />
+                  <div>
                     <div
-                      class="bg-[#f1f4f1] text-black h-full border-black content-center"
+                      class="text-left max-w-[350px] text-[#025048] md:max-w-full whitespace-nowrap overflow-x-hidden text-ellipsis p-3"
                     >
-                      {{ noOfProductInCart(item) }}
+                      {{ item.name }}
                     </div>
-                    <button
-                      class="text-center px-4"
-                      @click="addProductToCart(item)"
-                    >
-                      +
-                    </button>
+                    <div class="flex items-start justify-start">
+                      <div
+                        class="grid grid-cols-3 text-center mx-4 w-full max-h-[50px] max-w-[150px] px-0 py-0 self-center text-[#424b4a] border-2 bg-white text-xl"
+                      >
+                        <button
+                          @click="removeProductFromCart(item)"
+                          class="py-2 px-3"
+                        >
+                          -
+                        </button>
+                        <div class="bg-white border-x-2 h-full content-center">
+                          {{ noOfProductInCart(item) }}
+                        </div>
+                        <button
+                          class="text-center px-4"
+                          @click="addProductToCart(item)"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="text-black bg-[#f1f4f1] text-2xl">
-                ${{ (noOfProductInCart(item) * item.price).toFixed(2) }}
+                <div class="text-[#424b4a] bg-white text-xl self-end">
+                  ${{
+                    (noOfProductInCart(item) * item.currentPrice).toFixed(2)
+                  }}
+                </div>
               </div>
             </div>
           </div>
           <div
-            v-if="cartItems.length"
-            class="flex justify-between bg-[#f1f4f1]"
+            v-if="cartItems.length === 0"
+            class="text-[#424b4a] p-3 flex h-full justify-center items-center"
           >
-            <div class="p-3 text-2xl text-left">Total</div>
-            <div class="p-3 text-2xl text-right">${{ getTotal() }}</div>
-          </div>
-          <div
-            v-else
-            class="text-black p-3 flex justify-start align-middle h-[100vh]"
-          >
-            <div>No items in cart</div>
+            <div>No products in the cart.</div>
           </div>
         </div>
       </div>
@@ -127,8 +149,7 @@ export default {
     },
   },
   watch: {
-    isCartOpen(value) {
-      console.log(value)
+    isCartOpen() {
       this.toggle()
     },
   },
@@ -136,7 +157,7 @@ export default {
     getTotal() {
       let sum = 0
       this.cartItems.forEach(item => {
-        sum += item.price
+        sum += item.currentPrice
       })
       return sum.toFixed(2)
     },

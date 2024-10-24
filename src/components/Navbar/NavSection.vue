@@ -1,5 +1,4 @@
 <script setup>
-import CartDrawer from '../Cart/CartDrawer.vue'
 import CartIcon from '../Cart/CartIcon.vue'
 
 import SocialMedia from './SocialMedia.vue'
@@ -38,10 +37,10 @@ const onResize = event => {
 <template>
   <div :class="[position === 'header' ? 'relative' : '']">
     <div
-      :class="`transition-all font-roboto ${position === 'header' ? 'bg-[#025048] text-white h-[80px] md:h-[120px] sticky top-0 z-50' : 'bg-[#f1f4f1] text-[#025048] h-auto min-h-[100px] p-10 '} flex justify-center items-center px-5 md:px-10`"
+      :class="`transition-all font-roboto ${position === 'header' ? 'bg-[#025048] text-white h-[80px] md:h-[120px] top-0 z-50' : 'bg-[#f1f4f1] text-[#025048] h-auto min-h-[100px] p-10 '} flex justify-center items-center px-5 md:px-10`"
     >
       <nav
-        :class="`max-w-[1500px] grid ${position === 'footer' ? 'max-sm:grid-cols-1 max-sm:space-y-5 justify-center items-center max-md:grid-cols-3 grid-cols-5' : 'grid-cols-5'} w-full items-center justify-center`"
+        :class="`max-w-[1440px] grid ${position === 'footer' ? 'max-sm:grid-cols-1 max-sm:space-y-5 justify-center items-center max-md:grid-cols-3 grid-cols-5' : 'grid-cols-5'} w-full items-center justify-center`"
       >
         <RouterLink
           :to="{
@@ -105,13 +104,12 @@ const onResize = event => {
     />
     <div v-if="position === 'footer'" class="bg-[#f1f4f1] border-t-2">
       <div
-        class="max-w-[1500px] m-auto text-[#424B4A] text-xl p-5 md:px-10 min-[1500px]:px-0 grid grid-cols-2 m-auto'}`"
+        class="max-w-[1440px] m-auto text-[#424B4A] text-xl p-5 md:px-10 min-[1440px]:px-0 grid grid-cols-2 m-auto'}`"
       >
         <div class="col-span-1">Copyright © 2024</div>
         <div class="col-span-1 text-right">All rights reserved</div>
       </div>
     </div>
-    <CartDrawer v-if="position === 'header'" />
   </div>
 </template>
 

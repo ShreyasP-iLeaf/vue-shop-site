@@ -3,7 +3,7 @@
     class="bg-[#f1f4f1] px-5 py-14 lg:py-0 mt-10 lg:px-10 h-auto lg:h-[1450px]"
   >
     <div
-      class="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 text-[#424b4a]"
+      class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 text-[#424b4a]"
     >
       <div class="flex flex-col justify-center">
         <div class="w-full">

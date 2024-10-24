@@ -19,7 +19,7 @@ onMounted(() => {
     ref="banner"
     class="bg-[#025048] lg:h-[750px] p-5 pb-10 lg:p-10 text-white"
   >
-    <div class="max-w-[1500px] m-auto grid grid-cols-1 lg:grid-cols-2">
+    <div class="max-w-[1440px] m-auto grid grid-cols-1 lg:grid-cols-2">
       <div
         class="flex flex-col justify-center text-center lg:justify-items-center lg:text-left items-center mb-10"
       >
