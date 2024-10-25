@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Wade Warren",
+    "designation": "Business Man",
+    "review": "Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    "image": "testimonial-skip-01.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Mila Kunis",
+    "designation": "Fashion Designer",
+    "review": "Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    "image": "testimonial-skip-02.jpg"
+  }
+]

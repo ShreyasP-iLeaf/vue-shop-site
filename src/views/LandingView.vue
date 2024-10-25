@@ -12,10 +12,12 @@
     />
     <ExploreSection />
     <TrendingSection />
+    <ReviewSection />
   </div>
 </template>
 
 <script setup>
+import ReviewSection from '@/components/Review/ReviewSection.vue'
 import TrendingSection from '@/components/Trending/TrendingSection.vue'
 import ExploreSection from '@/components/ExploreSection.vue'
 import BannerSection from '@/components/BannerSection.vue'

@@ -1,5 +1,5 @@
 <template>
-  <div ref="shop" class="p-5 lg:px-10 lg:py-24">
+  <div class="p-5 lg:px-10 lg:py-14">
     <div class="max-w-[1440px] mx-auto">
       <div class="mt-10 lg:my-10 text-[#025048]">
         <div class="text-xl sm:text-2xl">TRENDING NOW</div>
