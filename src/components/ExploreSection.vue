@@ -1,6 +1,9 @@
 <template>
   <div
-    class="flex items-center justify-center h-[550px] bg-center bg-fixed bg-parallax bg-cover bg-no-repeat"
+    class="flex items-center justify-center h-[550px] bg-center bg-fixed bg-cover bg-no-repeat"
+    :style="{
+      backgroundImage: `url('${ParallaxImage}')`,
+    }"
   >
     <div
       class="bg-white w-[70%] lg:w-[50%] px-10 py-14 text-[#025048] text-center"
@@ -19,3 +22,7 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import ParallaxImage from '../assets/images/cta-bg.jpg'
+</script>

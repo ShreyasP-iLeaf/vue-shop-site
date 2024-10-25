@@ -20,9 +20,7 @@ export default {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
-      backgroundImage: {
-        parallax: 'url("./src/assets/images/cta-bg.jpg")',
-      },
+      backgroundImage: {},
     },
   },
   plugins: [],

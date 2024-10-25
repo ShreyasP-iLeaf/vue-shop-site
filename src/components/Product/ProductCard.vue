@@ -67,10 +67,12 @@
     <span class="text-[#424b4a] inline-block before:content-['☆']"></span>
   </div>
   <div class="pb-1 text-xl text-[#424b4a] font-extrabold lg:text-3xl">
-    <span class="line-through opacity-50 font-extrabold mr-2"
+    <span
+      v-if="details.lastPrice"
+      class="line-through opacity-50 font-bold mr-2"
       >${{ details.lastPrice.toFixed(2) }}</span
     >
-    <span class="font-extrabold">${{ details.currentPrice.toFixed(2) }}</span>
+    <span class="font-bold">${{ details.currentPrice.toFixed(2) }}</span>
   </div>
 </template>
 

@@ -11,10 +11,12 @@
       @productSection="val => (val ? emit('productSection', val) : null)"
     />
     <ExploreSection />
+    <TrendingSection />
   </div>
 </template>
 
 <script setup>
+import TrendingSection from '@/components/Trending/TrendingSection.vue'
 import ExploreSection from '@/components/ExploreSection.vue'
 import BannerSection from '@/components/BannerSection.vue'
 import AboutView from '@/components/AboutSection.vue'

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Ceramic Bottles",
+    "lastPrice": null,
+    "currentPrice": 249,
+    "category": "Ceramic",
+    "images": ["product-09-300x300.jpg"]
+  },
+  {
+    "id": 2,
+    "name": "Ceramic Cup",
+    "lastPrice": 237,
+    "currentPrice": 189,
+    "category": "Ceramic",
+    "images": ["ceramic-cup-01.jpg"]
+  },
+  {
+    "id": 3,
+    "name": "Ceramic Drink Coasters",
+    "lastPrice": 157,
+    "currentPrice": 99,
+    "category": "Ceramic",
+    "images": ["product-03-300x300.jpg"]
+  }
+]
