@@ -47,7 +47,7 @@ onMounted(() => {
             store.
           </div>
           <button
-            class="min-w-[160px] hover:bg-[#025048] hover:text-white text-[#025048] text-xl sm:text-2xl font-semibold self-start block px-5 py-3 border-[#025048] border-2"
+            class="min-w-[160px] hover:bg-[#025048] hover:text-white text-[#025048] text-xl sm:text-2xl font-normal self-start block px-5 py-2 border-[#025048] border-2"
           >
             READ MORE
           </button>

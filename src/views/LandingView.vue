@@ -10,10 +10,12 @@
     <ProductList
       @productSection="val => (val ? emit('productSection', val) : null)"
     />
+    <ExploreSection />
   </div>
 </template>
 
 <script setup>
+import ExploreSection from '@/components/ExploreSection.vue'
 import BannerSection from '@/components/BannerSection.vue'
 import AboutView from '@/components/AboutSection.vue'
 import ProductCategory from '@/components/Category/ProductCategory.vue'

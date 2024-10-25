@@ -35,7 +35,7 @@ onMounted(() => {
           </p>
         </div>
         <button
-          class="self-center min-w-[160px] hover:bg-white hover:text-[#025048] text-white text-xl sm:text-2xl font-normal lg:self-start block px-5 py-3 mb-0 lg:mb-10 border-white border-2"
+          class="self-center min-w-[160px] hover:bg-white hover:text-[#025048] text-white text-xl sm:text-2xl font-normal lg:self-start block px-5 py-2 mb-0 lg:mb-10 border-white border-2"
         >
           SHOP NOW
         </button>

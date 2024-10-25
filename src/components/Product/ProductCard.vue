@@ -55,7 +55,7 @@
   </div>
   <div class="text-xl text-[#424b4a] opacity-60">{{ details.category }}</div>
   <div
-    class="py-2 pb-1 text-xl font-bold lg:text-3xl text-[#025048] cursor-pointer"
+    class="py-2 pb-1 text-2xl font-bold lg:text-3xl text-[#025048] cursor-pointer"
   >
     {{ details.name }}
   </div>
