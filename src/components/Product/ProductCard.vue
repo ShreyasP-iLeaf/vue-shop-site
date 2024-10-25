@@ -79,10 +79,7 @@ import { defineProps, ref, computed } from 'vue'
 import { cartStore } from '@/stores/app'
 
 const { details } = defineProps(['details'])
-// const imagePath = computed(
-//   () => 'url(' + require(`../../assets/images/${details.images[0]}`) + ')',
-// )
-// console.log(imagePath)
+
 const isTooltipShown = ref(false)
 const isCartShown = ref(false)
 const isProductAdded = ref(false)

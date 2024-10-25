@@ -77,10 +77,7 @@ const onResize = event => {
           <li
             :class="`px-5 ${position === 'header' ? 'hover:scale-x-110 hover:scale-y-110 duration-100 ease-in-out' : 'my-1'}`"
           >
-            <a
-              @click="productsRef.scrollIntoView()"
-              class="cursor-pointer"
-              href="#"
+            <a @click="productsRef.scrollIntoView()" class="cursor-pointer"
               >SHOP</a
             >
           </li>

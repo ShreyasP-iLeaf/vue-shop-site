@@ -34,7 +34,7 @@
           }
         "
       >
-        <a href="">SHOP</a>
+        <a>SHOP</a>
       </li>
       <li class="px-5 py-3 hover:bg-[#fafafb]">
         <a href="">CONTACT</a>

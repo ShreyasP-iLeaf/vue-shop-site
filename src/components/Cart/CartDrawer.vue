@@ -70,7 +70,7 @@
                 <div class="bg-white max-w-[450px flex">
                   <img
                     class="w-[100px] max-h-[100px] object-contain"
-                    :src="`/vue-shop-site/src/assets/images/${item.images[0]}`"
+                    :src="getImageURL(item.images[0])"
                     :alt="`product-${item.id} image`"
                   />
                   <div>
@@ -154,6 +154,12 @@ export default {
     },
   },
   methods: {
+    getImageURL(imageName) {
+      const url = new URL(`../../assets/images/${imageName}`, import.meta.url)
+        .href
+      console.log(url)
+      return url
+    },
     getTotal() {
       let sum = 0
       this.cartItems.forEach(item => {
