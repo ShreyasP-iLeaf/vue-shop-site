@@ -13,10 +13,12 @@
     <ExploreSection />
     <TrendingSection />
     <ReviewSection />
+    <EndBanner />
   </div>
 </template>
 
 <script setup>
+import EndBanner from '@/components/EndBanner.vue'
 import ReviewSection from '@/components/Review/ReviewSection.vue'
 import TrendingSection from '@/components/Trending/TrendingSection.vue'
 import ExploreSection from '@/components/ExploreSection.vue'
