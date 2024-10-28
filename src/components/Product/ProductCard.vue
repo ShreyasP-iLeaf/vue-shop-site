@@ -10,6 +10,14 @@
       }"
       @mouseenter="showCartIcon(true)"
       @mouseleave="showCartIcon(false)"
+      @click="
+        router.push({
+          name: 'product',
+          params: {
+            id: details.id,
+          },
+        })
+      "
     >
       <button
         class="absolute bg-white text-[#424b4a] px-4 drop-shadow-2xl py-1 rounded-2xl top-5 left-5"
@@ -23,7 +31,7 @@
         @mouseover.stop="showTooltip(true)"
         @mouseout.stop="showTooltip(false)"
         :data-tooltip-target="`tooltip-default-${details.id}`"
-        @click="
+        @click.stop="
           () => {
             addToCart(details)
             showTooltip(false)
@@ -78,9 +86,11 @@
 
 <script setup>
 import { defineProps, ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { cartStore } from '@/stores/app'
 
 const { details } = defineProps(['details'])
+const router = useRouter()
 
 const isTooltipShown = ref(false)
 const isCartShown = ref(false)
@@ -88,10 +98,9 @@ const isProductAdded = ref(false)
 
 const getImageURL = computed(() => {
   const url = new URL(
-    `../../assets/images/${details.images[0]}`,
+    `../../assets/images/${details.images[0][1]}`,
     import.meta.url,
   ).href
-  console.log(url)
   return url
 })
 function showTooltip(val) {

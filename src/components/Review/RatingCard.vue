@@ -27,7 +27,6 @@ const { review } = defineProps(['review'])
 const getImageURL = computed(() => {
   const url = new URL(`../../assets/images/${review.image}`, import.meta.url)
     .href
-  console.log(url)
   return url
 })
 </script>

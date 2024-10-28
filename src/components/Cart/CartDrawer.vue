@@ -70,7 +70,7 @@
                 <div class="bg-white max-w-[450px flex">
                   <img
                     class="w-[100px] max-h-[100px] object-contain"
-                    :src="getImageURL(item.images[0])"
+                    :src="getImageURL(item.images[0][0])"
                     :alt="`product-${item.id} image`"
                   />
                   <div>
@@ -157,7 +157,6 @@ export default {
     getImageURL(imageName) {
       const url = new URL(`../../assets/images/${imageName}`, import.meta.url)
         .href
-      console.log(url)
       return url
     },
     getTotal() {

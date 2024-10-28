@@ -5,7 +5,11 @@
     "lastPrice": 237,
     "currentPrice": 189,
     "category": "Ceramic",
-    "images": ["ceramic-cup-01.jpg"]
+    "images": [
+      ["ceramic-cup-0.jpg", "ceramic-cup-0-large.jpg"],
+      ["ceramic-cup-1.jpg", "ceramic-cup-1-large.jpg"],
+      ["ceramic-cup-2.jpg", "ceramic-cup-2-large.jpg"]
+    ]
   },
   {
     "id": 2,
@@ -13,7 +17,11 @@
     "lastPrice": 349,
     "currentPrice": 299,
     "category": "Ceramic",
-    "images": ["ceramic-planter-01-300x300.jpg"]
+    "images": [
+      ["ceramic-planter-0.jpg", "ceramic-planter-0-large.jpg"],
+      ["ceramic-planter-1.jpg", "ceramic-planter-1-large.jpg"],
+      ["ceramic-planter-2.jpg", "ceramic-planter-2-large.jpg"]
+    ]
   },
   {
     "id": 3,
@@ -21,7 +29,10 @@
     "lastPrice": 179,
     "currentPrice": 119,
     "category": "Ceramic",
-    "images": ["product-01-300x300.jpg"]
+    "images": [
+      ["ceramic-plate-0.jpg", "ceramic-plate-0-large.jpg"],
+      ["ceramic-plate-1.jpg", "ceramic-plate-1-large.jpg"]
+    ]
   },
   {
     "id": 4,
@@ -29,7 +40,10 @@
     "lastPrice": 249,
     "currentPrice": 209,
     "category": "Ceramic",
-    "images": ["product-02-300x300.jpg"]
+    "images": [
+      ["plate-and-bowl-0.jpg", "plate-and-bowl-0-large.jpg"],
+      ["plate-and-bowl-1.jpg", "plate-and-bowl-1-large.jpg"]
+    ]
   },
   {
     "id": 5,
@@ -37,7 +51,10 @@
     "lastPrice": 349,
     "currentPrice": 299,
     "category": "Ceramic",
-    "images": ["product-07-300x300.jpg"]
+    "images": [
+      ["plate-and-spoons-0.jpg", "plate-and-spoons-0-large.jpg"],
+      ["plate-and-spoons-1.jpg", "plate-and-spoons-1-large.jpg"]
+    ]
   },
   {
     "id": 6,
@@ -45,6 +62,9 @@
     "lastPrice": 247,
     "currentPrice": 217,
     "category": "Pottery",
-    "images": ["contact-01-300x300.jpg"]
+    "images": [
+      ["ceramic-vases-0.jpg", "ceramic-vases-0-large.jpg"],
+      ["ceramic-vases-1.jpg", "ceramic-vases-1-large.jpg"]
+    ]
   }
 ]

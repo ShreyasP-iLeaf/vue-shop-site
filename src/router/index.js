@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Landing from '../views/LandingView.vue'
-import Product from '@/views/Product.vue'
+import Product from '@/views/ProductView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

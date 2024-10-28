@@ -1,26 +1,36 @@
 [
   {
-    "id": 1,
+    "id": 7,
     "name": "Ceramic Bottles",
     "lastPrice": null,
     "currentPrice": 249,
     "category": "Ceramic",
-    "images": ["product-09-300x300.jpg"]
+    "images": [
+      ["ceramic-bottles-0.jpg", "ceramic-bottles-0-large.jpg"],
+      ["ceramic-bottles-1.jpg", "ceramic-bottles-1-large.jpg"]
+    ]
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "Ceramic Cup",
     "lastPrice": 237,
     "currentPrice": 189,
     "category": "Ceramic",
-    "images": ["ceramic-cup-01.jpg"]
+    "images": [
+      ["ceramic-cup-0.jpg", "ceramic-cup-0-large.jpg"],
+      ["ceramic-cup-1.jpg", "ceramic-cup-1-large.jpg"],
+      ["ceramic-cup-2.jpg", "ceramic-cup-2-large.jpg"]
+    ]
   },
   {
-    "id": 3,
+    "id": 8,
     "name": "Ceramic Drink Coasters",
     "lastPrice": 157,
     "currentPrice": 99,
     "category": "Ceramic",
-    "images": ["product-03-300x300.jpg"]
+    "images": [
+      ["ceramic-coasters-0.jpg", "ceramic-coasters-0-large.jpg"],
+      ["ceramic-coasters-1.jpg", "ceramic-coasters-1-large.jpg"]
+    ]
   }
 ]
