@@ -10,7 +10,9 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           class="mb-10"
-          v-for="(product, index) in productData"
+          v-for="(product, index) in productData.filter(
+            product => product.isTrending,
+          )"
           :key="`product-${index}`"
         >
           <ProductCard :details="product" />
@@ -21,6 +23,6 @@
 </template>
 
 <script setup>
-import productData from './data.json'
-import ProductCard from '../Product/ProductCard.vue'
+import productData from '@/data/products.json'
+import ProductCard from './Product/ProductCard.vue'
 </script>

@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import productData from './data.json'
+import productData from '@/data/products.json'
 import ProductCard from './ProductCard.vue'
 import { ref, onMounted } from 'vue'
 

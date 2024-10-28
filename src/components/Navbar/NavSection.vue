@@ -4,7 +4,7 @@ import CartIcon from '../Cart/CartIcon.vue'
 import SocialMedia from './SocialMedia.vue'
 import MenuItems from './MenuItems.vue'
 
-import { ref, computed, defineProps, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 const isMenuOpen = ref(null)
 const browserWidth = ref(null)
 

@@ -61,8 +61,18 @@
       </div>
     </div>
   </div>
-  <div class="text-xl text-[#424b4a] opacity-60">{{ details.category }}</div>
+  <div class="text-xl text-[#424b4a] opacity-60">
+    {{ details.categories[0] }}
+  </div>
   <div
+    @click="
+      router.push({
+        name: 'product',
+        params: {
+          id: details.id,
+        },
+      })
+    "
     class="py-2 pb-1 text-2xl font-bold lg:text-3xl text-[#025048] cursor-pointer"
   >
     {{ details.name }}
