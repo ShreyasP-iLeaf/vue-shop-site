@@ -447,6 +447,20 @@
           </div>
         </div>
       </div>
+      <h1 class="text-3xl md:text-6xl my-14 text-[#025048]">
+        Related products
+      </h1>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+      >
+        <div
+          class="mb-10"
+          v-for="(product, index) in filteredProducts"
+          :key="`product-${index}`"
+        >
+          <ProductCard :details="product" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -455,6 +469,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref, computed } from 'vue'
 import productData from '@/data/products.json'
+import ProductCard from '../components/Product/ProductCard.vue'
 import { cartStore } from '@/stores/app'
 import ZoomingCarousel from '@/components/ZoomingCarousel.vue'
 import 'vue3-carousel/dist/carousel.css'
@@ -463,6 +478,17 @@ const product = ref(null)
 const showDescription = ref(true)
 const router = useRouter()
 const cartItems = computed(() => cartStore().cart)
+
+const filteredProducts = computed(() => {
+  const filtered = productData
+    .filter(
+      each =>
+        each.id !== product.value.id &&
+        product.value.categories.includes(each.categories[0]),
+    )
+    .slice(3)
+  return filtered
+})
 
 onMounted(() => {
   const route = useRoute()

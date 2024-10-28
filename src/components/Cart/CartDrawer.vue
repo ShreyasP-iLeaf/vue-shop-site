@@ -122,76 +122,84 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, watch, onMounted } from 'vue'
 import { cartStore } from '@/stores/app'
-export default {
-  name: 'ShoppingCart',
-  data() {
-    return {
-      open: false,
-      dimmer: true,
-    }
+
+const store = cartStore()
+
+// Reactive Variables
+const open = ref(false)
+
+// Computed Properties
+const cartItems = computed({
+  get: () => store.cart,
+  set: value => store.updateCart(value),
+})
+const isCartOpen = computed(() => store.isCartOpen)
+
+watch(isCartOpen, () => {
+  toggle()
+})
+
+const cartItemsUnique = computed(() => {
+  const uniqueObjects = {}
+  cartItems.value.forEach(obj => {
+    uniqueObjects[obj.id] = obj
+  })
+  return Object.values(uniqueObjects)
+})
+
+// Load cartItems from localStorage on component mount
+onMounted(() => {
+  const savedCart = localStorage.getItem('cartItems')
+  if (savedCart) {
+    store.updateCart(JSON.parse(savedCart)) // Update store with saved items
+  }
+})
+
+// Watch for changes in cartItems and save to localStorage
+watch(
+  cartItems,
+  newCart => {
+    localStorage.setItem('cartItems', JSON.stringify(newCart))
   },
-  computed: {
-    cartItems() {
-      return cartStore().cart
-    },
-    isCartOpen() {
-      return cartStore().isCartOpen
-    },
-    cartItemsUnique() {
-      let uniqueObjects = {}
-      this.cartItems.forEach(obj => {
-        uniqueObjects[obj.id] = obj
-      })
-      let output = Object.values(uniqueObjects)
-      return output
-    },
-  },
-  watch: {
-    isCartOpen() {
-      this.toggle()
-    },
-  },
-  methods: {
-    getImageURL(imageName) {
-      const url = new URL(`../../assets/images/${imageName}`, import.meta.url)
-        .href
-      return url
-    },
-    getTotal() {
-      let sum = 0
-      this.cartItems.forEach(item => {
-        sum += item.currentPrice
-      })
-      return sum.toFixed(2)
-    },
-    toggle() {
-      this.open = !this.open
-      if (this.open) document.body.style.overflowY = 'hidden'
-      else document.body.style.overflowY = 'auto'
-    },
-    closeCart() {
-      cartStore().toggleCart(false)
-    },
-    noOfProductInCart(product) {
-      let count = 0
-      this.cartItems.forEach(item => (item.id === product.id ? count++ : null))
-      return count
-    },
-    ifAtleastOneItem(product) {
-      return this.cartItems.findIndex(item => product.id === item.id)
-    },
-    addProductToCart(product) {
-      cartStore().addToCart(product)
-    },
-    removeProductFromCart(product) {
-      const cartCopy = [...this.cartItems]
-      const itemIndex = cartCopy.findIndex(item => item.id === product.id)
-      cartCopy.splice(itemIndex, 1)
-      cartStore().updateCart(cartCopy)
-    },
-  },
+  { deep: true },
+)
+
+// Methods
+const getImageURL = imageName => {
+  return new URL(`../../assets/images/${imageName}`, import.meta.url).href
+}
+
+const getTotal = () => {
+  return cartItems.value
+    .reduce((sum, item) => sum + item.currentPrice, 0)
+    .toFixed(2)
+}
+
+const toggle = () => {
+  open.value = !open.value
+  document.body.style.overflowY = open.value ? 'hidden' : 'auto'
+}
+
+const closeCart = () => {
+  store.toggleCart(false)
+}
+
+const noOfProductInCart = product => {
+  return cartItems.value.filter(item => item.id === product.id).length
+}
+
+const addProductToCart = product => {
+  store.addToCart(product)
+}
+
+const removeProductFromCart = product => {
+  const cartCopy = [...cartItems.value]
+  const itemIndex = cartCopy.findIndex(item => item.id === product.id)
+  cartCopy.splice(itemIndex, 1)
+  store.updateCart(cartCopy)
 }
 </script>
 
