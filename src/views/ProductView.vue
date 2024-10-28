@@ -467,7 +467,7 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, watch } from 'vue'
 import productData from '@/data/products.json'
 import ProductCard from '../components/Product/ProductCard.vue'
 import { cartStore } from '@/stores/app'
@@ -486,12 +486,21 @@ const filteredProducts = computed(() => {
         each.id !== product.value.id &&
         product.value.categories.includes(each.categories[0]),
     )
-    .slice(3)
+    .slice(0, 4)
   return filtered
 })
 
+const route = useRoute()
+
+const productId = computed(() => {
+  return Number(route.params.id)
+})
+
+watch(productId, () => {
+  product.value = productData.find(product => product.id === productId.value)
+})
+
 onMounted(() => {
-  const route = useRoute()
   const productId = Number(route.params.id)
   product.value = productData.find(product => product.id === productId)
 })

@@ -10,7 +10,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           class="mb-10"
-          v-for="(product, index) in productData"
+          v-for="(product, index) in productData.slice(0, 6)"
           :key="`product-${index}`"
         >
           <ProductCard :details="product" />
